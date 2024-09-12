@@ -8,15 +8,14 @@ def blackjack_score(hand):
     num_aces = hand.count('Ace')
 
     for card in hand:
-        if card not in VALID_CARDS:
+        if card not in VALID_CARDS or len(hand) > 5:
             return INVALID_MSG
-        if len(hand) > 5:
-            return INVALID_MSG
+        
         if isinstance(card, str) and card == ACE_CARD:
             card = 11
         elif isinstance(card, str):
             card = 10
-        # if card in hand:
+            
         score += card
 
     while score > 21 and num_aces > 0:
